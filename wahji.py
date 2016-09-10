@@ -21,19 +21,25 @@ file.close()
 my_platform = platform.system()
 
 if my_platform == "CYGWIN_NT-6.1":
-	print "You're using CYGWIN_NT-6! Your command directory will be located in "
-	print "the current directory."
+	print "You're using CYGWIN_NT-6! Your command directory will be "
+	print "located in the current directory."
 	os.mkdir("commands")
+
 elif my_platform == "Windows":
-	print "You're using Windows! Your command directory will be located in "
-	"""Some code"""
+	print "You're using Windows! Your command directory will be "
+	print "located in the current directory."
+	os.mkdir("commands")
+
 elif my_platform == "Linux":
 	print "You're using Linux! Your command directory will be located in "
 	print "/usr/local/lib/python2.7/dist-packages/wahji/commands"
 	os.mkdir("/usr/local/lib/python2.7/dist-packages/wahji")
 	os.mkdir("/usr/local/lib/python2.7/dist-packages/wahji/commands")
+
 elif my_platform == "Darwin":
-	print "You're using Mac OS! Your command directory will be located in "
+	print "You're using Mac OS! Your command directory will be  "
+	print "located in the current directory."
 	os.mkdir("commands")
+
 else:
 	os.mkdir("commands")

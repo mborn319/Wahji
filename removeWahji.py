@@ -25,7 +25,7 @@ elif my_platform == "Linux":
 	os.rmdir("/usr/local/lib/python2.7/dist-packages/wahji/commands")
 	os.rmdir("/usr/local/lib/python2.7/dist-packages/wahji")
 elif my_platform == "Darwin":
-	"""some code to remove directory"""
+	os.rmdir("commands")
 else:
 	os.rmdir("commands")
 print "Deleted wahji files."
