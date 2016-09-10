@@ -5,20 +5,36 @@
 
 # FIRST: init the libraries we need for parsing Yaml, Markdown
 import markdown
-from os.path import basename
+import os
+#from os.path import basename
 
 """
-    For each file in the themes/html folder...
+    Functions for working with files
 """
-htmlfiles = getFiles('themes/html')
-for filename in htmlfiles:
-    # read the HTML & Markdown files into a string
-    htmlfile = readFile(filename)
+# Get a list of files from a given directory
+def getFiles(dirname):
+    return os.listdir(dirname)
 
-    # Get the markdown file with the same name (not the same extension!)
-    # as the HTML template file
-    mdfilename = open(basename(filename)
-    mdfile = readFile(mdfilename)
+# Read the contents of a given file.
+def readFile(thefilename):
+    thefile = open(thefilename, 'r')
+
+    return thefile.read().strip('.')
+
+def basename(thefilename):
+    pos =  thefilename.find('.')
+    return thefilename.replace(thefilename[pos:], '')
+
+# Get the HTML template (just one hardcoded filename for now)
+htmlfile = readFile('template.html')
+
+"""
+    For each markdown file in the content/ folder...
+"""
+contentfiles = getFiles('content')
+for filename in contentfiles:
+    # read the Markdown file into a string
+    mdfile = readFile('content/' + filename)
 
     # parse the markdown into an HTML string
     content = markdown.markdown(mdfile)
@@ -27,18 +43,7 @@ for filename in htmlfiles:
     html = htmlfile.replace('{content_here}',content)
 
     # save the generated HTML into a new file.
-    newfile = open('output/' + filename,'w')
+    newfile = open('output/' + basename(filename) + '.html','w')
     newfile.write(html)
 
-"""
-    Functions for working with files
-"""
-
-# Get a list of files from a given directory
-def getFiles(dirname):
-    return os.listdir(dirname)
-
-# Read the contents of a given file.
-def readFile(thefilename):
-    thefile = open(thefilename, 'r')
-    return thefile.read().strip('.')
+    print filename
