@@ -1,20 +1,39 @@
-# this is the build script
+#creates wahji files
 
+import os, platform
 
+"""creates theme folder and its contents"""
+os.mkdir("content")
+os.mkdir("themes")
+os.mkdir("themes/css")
+os.mkdir("themes/img")
+os.mkdir("themes/js")
 
-# FIRST: init the libraries we need for parsing Yaml, Markdown
-import markdown
+"""creates hidden wahji file"""
+file = open(".wahji","w")
+file.close()
 
-# Second: read the HTML & Markdown files into a string
-htmlfile = open('template.md','r')
-mdfile = open('content.md','r')
+"""creates 404.html file"""
+file = open("404.html","w+")
+file.close()
 
-# Third: parse the markdown into an HTML string
-content = markdown.markdown(mdfile)
+"""checks os to figure out where command directory will go"""
+my_platform = platform.system()
 
-# Fourth: replace the {content_here} blocks in the HTML with markdown
-html = html.replace('{content_here}',content)
-
-# Fifth: save the generated HTML into a new file.
-newfile = open('output/index.html','rw+')
-newfile.write(html)
+if my_platform == "CYGWIN_NT-6.1":
+	print "You're using CYGWIN_NT-6! Your command directory will be located in "
+	print "the current directory."
+	os.mkdir("commands")
+elif my_platform == "Windows":
+	print "You're using Windows! Your command directory will be located in "
+	"""Some code"""
+elif my_platform == "Linux":
+	print "You're using Linux! Your command directory will be located in "
+	print "/usr/local/lib/python2.7/dist-packages/wahji/commands"
+	os.mkdir("/usr/local/lib/python2.7/dist-packages/wahji")
+	os.mkdir("/usr/local/lib/python2.7/dist-packages/wahji/commands")
+elif my_platform == "Darwin":
+	print "You're using Mac OS! Your command directory will be located in "
+	os.mkdir("commands")
+else:
+	os.mkdir("commands")
