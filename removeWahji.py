@@ -14,6 +14,9 @@ os.remove("404.html")
 """delete content folder"""
 shutil.rmtree("content")
 
+"""delete test.html file"""
+os.remove("test.html")
+
 """checks os to figure out where command directory will go"""
 my_platform = platform.system()
 
