@@ -1,0 +1,3 @@
+# Tell Git to ignore files that we don't want "saved" to the repository
+*.swp
+*.swo
