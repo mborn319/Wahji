@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 """
     wahji build
     This section generates the static HTML files
