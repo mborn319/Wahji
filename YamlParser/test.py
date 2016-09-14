@@ -1,6 +1,6 @@
 import yamlParser
 
-title_tag, site_theme = yamlParser.yamlParse()
+site = yamlParser.yamlParse()
 
-print title_tag
-print site_theme
+print site["site_name"]
+print site["theme"]

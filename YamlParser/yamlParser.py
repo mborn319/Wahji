@@ -15,12 +15,6 @@ def yamlParse():
 
     # Converts the contents of wahji.yml into a python dictionary
     site_info = yaml.load(stream) 
-    # Iterates over the dictionary, assigning dictionary values to associated variables
-    for key, value in site_info.items():
-        if key == "site_name":
-            title = value
-        if key == "theme":
-            site_theme = value
-    # Creates title_tag based on parsed data from the wahji.yml
-    title_tag = "<title>" + title + "</title> \n"
-    return title_tag, site_theme
+
+    # return the python dictionary so that other scripts can get at the values
+    return site_info
