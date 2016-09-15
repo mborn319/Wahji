@@ -6,6 +6,7 @@ import argparse
 import wahjiInit
 import removeWahji
 import findWahji
+import newWahji
 
 def wahjiUsage():
 	return '''wahji [-h] {init,new <project_name>,build} '''
@@ -32,15 +33,16 @@ class Wahji(object):
 			removeWahji.rem(loc)
 
 	def new(self):
-		boolean = findWahji.find()
+		loc = findWahji.find()
 
-		if boolean == True:
+		if not loc:
+			print ".wahji has not been initilized."
+		else:
 			parser = argparse.ArgumentParser(description='Create a new wahji project', usage=wahjiUsage())
 			parser.add_argument('project_name')
 			args = parser.parse_args(sys.argv[2:])
 			print "Creating " + args.project_name + "..."
-		else:
-			print ".wahji file not found"
+			newWahji.site(args.project_name)
 
 	def build(self):
 		boolean = findWahji.find()

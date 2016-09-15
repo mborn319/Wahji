@@ -16,6 +16,8 @@ def make():
 	os.mkdir("themes/img")
 	print "Creating js folder"
 	os.mkdir("themes/js")
+	print "Creating html folder"
+	os.mkdir("themes/js/html")
 
 	"""creates hidden wahji file"""
 	print "Creating .wahji file"
