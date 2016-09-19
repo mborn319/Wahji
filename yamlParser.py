@@ -8,9 +8,9 @@ def yamlParse():
     stream = file('wahji.yml', 'r')
 
     # Converts the contents of wahji.yml into a python dictionary
-    site_info = yaml.load(stream) 
+    site_settings = yaml.load(stream) 
 
     # Later, we'll probably do special stuff with these settings
 
     # Return the python dictionary / object.
-    return title_tag, site_theme
+    return site_settings
