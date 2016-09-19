@@ -1,3 +1,0 @@
-[console_scripts]
-wahji = wahji_install.wahji:wahji
-
