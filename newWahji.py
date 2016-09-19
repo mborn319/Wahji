@@ -3,7 +3,7 @@ import yamlParser
 
 def site(project_name, wahji_dir):
 
-    title_tag, site_theme = yamlParser.yamlParse()
+    site_settings = yamlParser.yamlParse()
 
     print site_theme
 
@@ -13,4 +13,4 @@ def site(project_name, wahji_dir):
 
     # Copy the default content from the Wahji installation dir to the new site dir
     shutil.copytree(wahji_dir + "/content", project_name + "content")
-    shutil.copytree(wahji_dir + "/themes/" + site_theme,"themes")
+    shutil.copytree(wahji_dir + "/themes/" + site_settings.theme,"themes")
