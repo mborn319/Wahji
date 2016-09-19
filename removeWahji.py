@@ -10,12 +10,6 @@ def rem(loc):
 	# delete them folder and its contents
 	shutil.rmtree("themes")
 
-	# delete .wahji file
-	os.remove(".wahji")
-
-	# delete 404.html file
-	os.remove("404.html")
-
 	# delete content folder
 	shutil.rmtree("content")
 

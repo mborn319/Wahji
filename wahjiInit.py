@@ -24,9 +24,4 @@ def make():
 	file = open(".wahji","w")
 	file.close()
 
-	"""creates 404.html file"""
-	print "Creating 404.html file"
-	file = open("404.html","w+")
-	file.close()
-
 	print "Done!"
