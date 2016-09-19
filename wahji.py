@@ -41,8 +41,8 @@ class Wahji(object):
 			parser = argparse.ArgumentParser(description='Create a new wahji project', usage=wahjiUsage())
 			parser.add_argument('project_name')
 			args = parser.parse_args(sys.argv[2:])
-			print "Creating " + args.project_name + "..."
-			newWahji.site(args.project_name)
+			print "Creating " + args.project_name + " at " + loc
+			newWahji.site(args.project_name, loc)
 
 	def build(self):
 		boolean = findWahji.find()
