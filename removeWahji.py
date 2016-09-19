@@ -1,15 +1,20 @@
-# deletes wahji content
+#deletes wahji content
 import os, shutil, platform
 
 def rem(loc):
-        
+
 	os.chdir(loc)
 	
-	print "deleting content"
-		
-	# delete them folder and its contents
-	shutil.rmtree("themes")
+	site = raw_input("Input site folder: ")
 
-	# delete content folder
-	shutil.rmtree("content")
+	print "Are you sure you want to delete", site, "Y/N: "
+	confirm = raw_input()
+	
+	if confirm == "Y" or confirm == "y":
+		"""delete site folder"""
+		shutil.rmtree(site)
+		print "Deleting site"
+
+	elif confirm == "N" or confirm == "n":
+		print "Site folder was not deleted"
 
