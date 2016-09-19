@@ -1,10 +1,8 @@
 #! /usr/bin/env python
-<<<<<<< HEAD
-#Template Wahji file
 import os
 import sys
 import argparse
-import wahjiInit
+import initWahji
 import removeWahji
 import findWahji
 import newWahji
