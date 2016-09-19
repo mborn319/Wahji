@@ -1,3 +1,6 @@
 # Tell Git to ignore files that we don't want "saved" to the repository
 *.swp
 *.swo
+
+# Don't commit Mac hidden files!
+.DS_Store
