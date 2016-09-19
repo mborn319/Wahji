@@ -12,7 +12,7 @@ import yamlParser
 def wahjiUsage():
 	return '''wahji [-h] {init,new <project_name>,build} '''
 
-class Wahji(object):
+class wahji(object):
 	def __init__(self):
 		parser = argparse.ArgumentParser(description="Wahji is a static site generator. Here will be some details about the project.... ", usage=wahjiUsage())
 		parser.add_argument('opt', help="Running wahji with the 'init' option will create the .wahji file in the CWD, and establish the themes directory. Running wahji with the new option requires an additonal parameter which is a project name. Running wahji with the build option will create the site directory.")
@@ -68,4 +68,4 @@ class Wahji(object):
                         buildWahji.build(site_dir,site_settings)
 
 if __name__ == "__main__":
-	Wahji()
+	wahji()
