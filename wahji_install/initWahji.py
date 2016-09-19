@@ -2,8 +2,10 @@
 
 import os, platform
 
-def make():
+def make(cur_dir):
 
+        print "setting up Wahji in directory: %s" % cur_dir
+        os.chdir(cur_dir)
 
 	"""creates theme folder and its contents"""
 	print "Creating content folder"

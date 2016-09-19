@@ -20,9 +20,10 @@ class wahji(object):
 		getattr(self, args.opt)()
 
 	def init(self):
+                cwd = os.getcwd()
 		loc = findWahji.find()
 		if not loc:
-			initWahji.make()
+			initWahji.make(cwd)
 		else:
 			print "Wahji has already been initilized!"
 
