@@ -7,6 +7,10 @@ def find():
 		"""Some code"""
 	elif my_platform == "Linux":
 		lookfor = ".wahji"
+                # Thoughts: could we just traverse up through the current working directory
+                # (NOT necessarily the installed directory!) to find the .wahji file?
+                # This is better than trying to guess where the .wahji file is,
+                # ESPECIALLY since recursively searching file by file can be really slow.
 		for root, dirs, files in os.walk('/home'):
     			if lookfor in files:
 					loc = root
