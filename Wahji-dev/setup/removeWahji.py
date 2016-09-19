@@ -5,17 +5,16 @@ def rem(loc):
 
 	os.chdir(loc)
 	
-	print "deleting content"
-		
-	"""delete them folder and its contents"""
-	shutil.rmtree("themes")
+	site = raw_input("Input site folder: ")
 
-	"""delete .wahji file"""
-	os.remove(".wahji")
+	print "Are you sure you want to delete", site, "Y/N: "
+	confirm = raw_input()
+	
+	if confirm == "Y" or confirm == "y":
+		"""delete site folder"""
+		shutil.rmtree(site)
+		print "Deleting site"
 
-	"""delete 4040.html file"""
-	os.remove("404.html")
-
-	"""delete content folder"""
-	shutil.rmtree("content")
+	elif confirm == "N" or confirm == "n":
+		print "Site folder was not deleted"
 
