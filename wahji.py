@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+<<<<<<< HEAD
 #Template Wahji file
 import os
 import sys
