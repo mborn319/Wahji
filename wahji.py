@@ -1,49 +1,56 @@
-"""
-    wahji build
-    This section generates the static HTML files
-"""
-
-# FIRST: init the libraries we need for parsing Yaml, Markdown
-import markdown
+#! /usr/bin/env python
+#Template Wahji file
 import os
-#from os.path import basename
+import sys
+import argparse
+import wahjiInit
+import removeWahji
+import findWahji
+import newWahji
 
-"""
-    Functions for working with files
-"""
-# Get a list of files from a given directory
-def getFiles(dirname):
-    return os.listdir(dirname)
+def wahjiUsage():
+	return '''wahji [-h] {init,new <project_name>,build} '''
 
-# Read the contents of a given file.
-def readFile(thefilename):
-    thefile = open(thefilename, 'r')
+class Wahji(object):
+	def __init__(self):
+		parser = argparse.ArgumentParser(description="Wahji is a static site generator. Here will be some details about the project.... ", usage=wahjiUsage())
+		parser.add_argument('opt', help="Running wahji with the 'init' option will create the .wahji file in the CWD, and establish the themes directory. Running wahji with the new option requires an additonal parameter which is a project name. Running wahji with the build option will create the site directory.")
+		args = parser.parse_args(sys.argv[1:2])
+		getattr(self, args.opt)()
 
-    return thefile.read().strip('.')
+	def init(self):
+		loc = findWahji.find()
+		if not loc:
+			wahjiInit.make()
+		else:
+			print "Wahji has already been initilized!"
 
-def basename(thefilename):
-    pos =  thefilename.find('.')
-    return thefilename.replace(thefilename[pos:], '')
+	def remove(self):
+		loc = findWahji.find()
+		if not loc:
+			print ".wahji was not found."
+		else:
+			removeWahji.rem(loc)
 
-# Get the HTML template (just one hardcoded filename for now)
-htmlfile = readFile('template.html')
+	def new(self):
+		loc = findWahji.find()
 
-"""
-    For each markdown file in the content/ folder...
-"""
-contentfiles = getFiles('content')
-for filename in contentfiles:
-    # read the Markdown file into a string
-    mdfile = readFile('content/' + filename)
+		if not loc:
+			print ".wahji has not been initilized."
+		else:
+			parser = argparse.ArgumentParser(description='Create a new wahji project', usage=wahjiUsage())
+			parser.add_argument('project_name')
+			args = parser.parse_args(sys.argv[2:])
+			print "Creating " + args.project_name + "..."
+			newWahji.site(args.project_name)
 
-    # parse the markdown into an HTML string
-    content = markdown.markdown(mdfile)
+	def build(self):
+		boolean = findWahji.find()
 
-    # replace the {content_here} blocks in the HTML with markdown
-    html = htmlfile.replace('{content_here}',content)
+		if boolean == True:
+			print "call build module..."
+		else:
+			print ".wahji file not found"
 
-    # save the generated HTML into a new file.
-    newfile = open('output/' + basename(filename) + '.html','w')
-    newfile.write(html)
-
-    print filename
+if __name__ == "__main__":
+	Wahji()
