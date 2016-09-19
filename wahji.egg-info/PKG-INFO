@@ -1,26 +1,12 @@
 Metadata-Version: 1.1
 Name: wahji
-Version: 1.0
+Version: 0.0.1a0
 Summary: Static Site Generator
 Home-page: https://github.com/mborn319/Wahji
-Author: Wahji CS370
+Author: Michael Born, John Happel, Tea Drincic, David Deeley, Carl Bennett, Paul Bressette
 Author-email: drincit@sunyit.edu
 License: MIT
-Description: # Wahji
-        Static Site Generator in Python.
-        
-        ## Installation instructions
-        
-        ### Install Pip
-        * `sudo apt install python-pip python-dev build-essential`
-        * `sudo pip install --upgrade pip`
-        
-        ### Install Python-Markdown
-        * `pip install markdown`
-        
-        ### Install PyYaml
-        * `pip install PyYAML`
-        
+Description: Static site generator...
 Keywords: static site generation
 Platform: UNKNOWN
 Classifier: Development Status :: 3 - Alpha

@@ -2,9 +2,9 @@
 import os
 import sys
 import argparse
-import initWahji
 import removeWahji
 import findWahji
+import initWahji
 import newWahji
 import buildWahji
 import yamlParser
@@ -22,7 +22,7 @@ class wahji(object):
 	def init(self):
 		loc = findWahji.find()
 		if not loc:
-			wahjiInit.make()
+			initWahji.make()
 		else:
 			print "Wahji has already been initilized!"
 
