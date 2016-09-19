@@ -6,6 +6,8 @@ import initWahji
 import removeWahji
 import findWahji
 import newWahji
+import buildWahji
+import yamlParser
 
 def wahjiUsage():
 	return '''wahji [-h] {init,new <project_name>,build} '''
@@ -44,12 +46,26 @@ class Wahji(object):
 			newWahji.site(args.project_name, loc)
 
 	def build(self):
-		boolean = findWahji.find()
+		loc = findWahji.find()
 
-		if boolean == True:
-			print "call build module..."
-		else:
+
+		if not loc:
 			print ".wahji file not found"
+		else:
+			# Get [project_name] from arguments
+			parser = argparse.ArgumentParser(description='Create a new wahji project', usage=wahjiUsage())
+			parser.add_argument('project_name')
+			args = parser.parse_args(sys.argv[2:])
+
+			# Read the site-specific wahji.yml settings file
+                        site_dir = loc + "/" + args.project_name
+			site_settings = yamlParser.yamlParse(site_dir)
+
+			print "Site settings:"
+			print site_settings
+
+			# Run the build script
+                        buildWahji.build(site_dir,site_settings)
 
 if __name__ == "__main__":
 	Wahji()
